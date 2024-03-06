@@ -1,19 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../../assets/Logo.svg";
 import { MdSearch, MdShoppingCart } from "react-icons/md";
 
-export const Header = () => {
+export const Header = ({
+  getProducts,
+  productList,
+  setProductList,
+  cartList,
+  setIsOpen,
+}) => {
   const [value, setValue] = useState("");
+
+  const submit = (e) => {
+    e.preventDefault();
+    if (value == "") {
+      getProducts();
+    }
+
+    const newProductList = productList.filter((product) =>
+      product.name.toLowerCase().includes(value.toLowerCase())
+    );
+
+    setProductList(newProductList);
+  };
 
   return (
     <header>
       <img src={Logo} alt="Logo Kenzie Burguer" />
       <div>
-        <button>
+        <button onClick={() => setIsOpen(true)}>
           <MdShoppingCart size={21} />
-          <span>0</span>
+          <span>{cartList.length}</span>
         </button>
-        <form>
+        <form onSubmit={(e) => submit(e)}>
           <input
             type="text"
             value={value}
