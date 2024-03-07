@@ -1,11 +1,13 @@
+import styles from "./styles.module.scss";
+
 export const ProductCard = ({ product, addToCart }) => {
   return (
-    <li>
+    <li className={styles.product__info}>
       <img src={product.img} alt={product.name} />
       <div>
         <h3>{product.name}</h3>
-        <span>{product.category}</span>
-        <span>
+        <span className={styles.product__category}>{product.category}</span>
+        <span className={styles.product__price}>
           {product.price.toLocaleString("pt-BR", {
             style: "currency",
             currency: "BRL",

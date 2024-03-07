@@ -1,0 +1,17 @@
+.product__container {
+  display: flex;
+  overflow-x: scroll;
+  padding-inline: 0.8rem;
+  padding-block: 1.2rem;
+  gap: 1.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .product__container {
+    max-width: 90%;
+    margin-inline: auto;
+    overflow-x: visible;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}
