@@ -1,1 +1,20 @@
 @import url("./globalStyles.scss");
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.button-default {
+  background-color: var(--gray-200);
+  color: #ffffff;
+  font-size: var(--headline-size);
+  border-radius: var(--radius-default);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  transition: 500ms;
+}
+
+.button-default:hover {
+  background-color: var(--color-primary);
+  transform: scale(1.02);
+}

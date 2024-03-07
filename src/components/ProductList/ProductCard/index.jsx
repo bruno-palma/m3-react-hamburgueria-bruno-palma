@@ -11,7 +11,9 @@ export const ProductCard = ({ product, addToCart }) => {
             currency: "BRL",
           })}
         </span>
-        <button onClick={() => addToCart(product)}>Adicionar</button>
+        <button className="button-default" onClick={() => addToCart(product)}>
+          Adicionar
+        </button>
       </div>
     </li>
   );

@@ -3,6 +3,7 @@ import { CartModal } from "../../components/CartModal";
 import { Header } from "../../components/Header";
 import { ProductList } from "../../components/ProductList";
 import { api } from "../../services";
+import { toast } from "react-toastify";
 
 export const HomePage = () => {
   const localCartList = localStorage.getItem("@BurguerKenzie:CartList");
@@ -22,7 +23,17 @@ export const HomePage = () => {
       });
       setProductList(newData);
     } catch (error) {
-      // console.log(error);
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
     }
   };
 
@@ -50,7 +61,16 @@ export const HomePage = () => {
     const productFound = cartList.find((item) => item.id == product.id);
 
     if (productFound) {
-      // alert("Produto já adicionado ao carrinho.");
+      toast.success("Mais uma unidade adicionada.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
 
       const newProduct = {
         ...productFound,
