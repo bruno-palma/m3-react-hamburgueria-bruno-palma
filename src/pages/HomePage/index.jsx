@@ -8,6 +8,7 @@ export const HomePage = () => {
   const localCartList = localStorage.getItem("@BurguerKenzie:CartList");
 
   const [isOpen, setIsOpen] = useState(false);
+  const [amount, setAmount] = useState("");
   const [productList, setProductList] = useState([]);
   const [cartList, setCartList] = useState(
     localCartList ? JSON.parse(localCartList) : []
@@ -21,7 +22,7 @@ export const HomePage = () => {
       });
       setProductList(newData);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -33,11 +34,23 @@ export const HomePage = () => {
     localStorage.setItem("@BurguerKenzie:CartList", JSON.stringify(cartList));
   }, [cartList]);
 
+  const total = () => {
+    const totalSum = cartList.reduce((prevValue, product) => {
+      return prevValue + product.price;
+    }, 0);
+
+    setAmount(totalSum);
+  };
+
+  useEffect(() => {
+    total();
+  }, [cartList]);
+
   const addToCart = (product) => {
     const productFound = cartList.find((item) => item.id == product.id);
 
     if (productFound) {
-      alert("Produto já adicionado ao carrinho.");
+      // alert("Produto já adicionado ao carrinho.");
 
       const newProduct = {
         ...productFound,
@@ -45,12 +58,17 @@ export const HomePage = () => {
         price: product.price * (productFound.quantity + 1),
       };
 
-      const filteredList = cartList.filter((item) => {
-        return item.id == product.id ? newProduct : item;
-      });
+      const newList = cartList.splice(
+        cartList.indexOf(productFound),
+        1,
+        newProduct
+      );
 
-      console.log(filteredList);
-      setCartList(filteredList);
+      setCartList(cartList);
+
+      localStorage.setItem("@BurguerKenzie:CartList", JSON.stringify(cartList));
+
+      total();
     } else {
       setCartList([...cartList, product]);
     }
@@ -82,6 +100,7 @@ export const HomePage = () => {
             removeToCart={removeToCart}
             removeAll={removeAll}
             setIsOpen={setIsOpen}
+            amount={amount}
           />
         ) : null}
       </main>

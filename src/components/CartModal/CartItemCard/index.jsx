@@ -4,7 +4,10 @@ export const CartItemCard = ({ product, removeToCart }) => {
   return (
     <li>
       <div>
-        <img src={product.img} alt={product.name} />
+        <div>
+          <img src={product.img} alt={product.name} />
+          <span>Qtd. {product.quantity}</span>
+        </div>
         <h3>{product.name}</h3>
       </div>
       <button
