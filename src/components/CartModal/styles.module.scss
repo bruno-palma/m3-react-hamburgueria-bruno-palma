@@ -45,6 +45,12 @@
 
     .modal__info {
       padding: 1.2rem 0.8rem;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
     }
 
     .modal__bottom {
