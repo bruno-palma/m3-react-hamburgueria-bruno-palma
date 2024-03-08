@@ -1,0 +1,103 @@
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.25);
+
+  .modal__container {
+    width: 90%;
+    max-width: 700px;
+    max-height: 70%;
+    background-color: #ffffff;
+    border-radius: var(--radius-default);
+    overflow-y: auto;
+
+    .modal__top {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--color-primary);
+      padding: 1.2rem 0.8rem;
+      border-radius: 8px 8px 0px 0px;
+
+      h2 {
+        color: #ffffff;
+        font-size: var(--heading3-size);
+        font-weight: 700;
+      }
+
+      button {
+        color: #ffffff;
+        border: none;
+        background-color: transparent;
+
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    .modal__info {
+      padding: 1.2rem 0.8rem;
+    }
+
+    .modal__bottom {
+      position: sticky;
+      bottom: 0;
+      padding-block: 1.2rem;
+      margin-inline: 0.8rem;
+      border-top: var(--border-default);
+      background-color: #ffffff;
+
+      div {
+        padding-bottom: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .total {
+          color: var(--gray-600);
+          font-size: var(--body-size);
+          font-weight: 600;
+        }
+
+        .amount {
+          color: var(--gray-300);
+          font-size: var(--body-size);
+          font-weight: 600;
+        }
+      }
+
+      .button {
+        width: 100%;
+        background-color: var(--gray-200);
+        color: #ffffff;
+        font-size: var(--headline-size);
+        font-weight: 600;
+        border-radius: var(--radius-default);
+        border: none;
+        padding-block: 1.5rem;
+        transition: 500ms;
+
+        &:hover {
+          background-color: var(--color-secondary);
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modal__container {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

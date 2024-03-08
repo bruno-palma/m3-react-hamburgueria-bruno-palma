@@ -7,7 +7,8 @@ body {
 .button-default {
   background-color: var(--gray-200);
   color: #ffffff;
-  font-size: var(--headline-size);
+  font-size: var(--body-size);
+  font-weight: 600;
   border-radius: var(--radius-default);
   border: none;
   padding: 0.7rem 1.4rem;
